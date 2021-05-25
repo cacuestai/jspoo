@@ -24,11 +24,11 @@ Vale la pena resaltar además lo siguiente:
 
 Descargue esta versión que cuenta con una página donde se puede probar el funcionamiento de lo tratado hasta aquí.
 
-### Versión 0.3.0 – Primera refactorización
+### Versión 0.3.n – Primera refactorización
 - Se agrega a la clase `Helpers` el método `loadPage` que se usará para cargar las páginas de ejemplos definidas en `./resources/views/`.
 - Los ejemplos del uso de la clase `Helpers`, pasan a la clase `Demo01` definida en el módulo `./resources/js/poo-js-01.js`. 
 - Observe que la clase `Helpers` ya no se exporta por defecto en el módulo `poo-js-01.js`.
 - En la clase `Demo01` se incluye el atributo estático privado `randomNumber`.
 - En `resources/js/index.js` la función `chooseAction` se encarga de condicionar el acceso a las opciones de la aplicación.
-- En la función `cargarDemo01` incluida en `resources/js/index.js` se hace una demostración de [importación dinámica](https://lenguajejs.com/javascript/caracteristicas/dynamic-import/).
+- En la función `loadDemo01` incluida en `resources/js/index.js` se hace una demostración de [importación dinámica](https://lenguajejs.com/javascript/caracteristicas/dynamic-import/).
 - Por último, observe el uso de `this` dentro de la clase `Demo01`, para hacer referencia a los miembros de dicha clase. Ejemplo: `this.`tryLuck().

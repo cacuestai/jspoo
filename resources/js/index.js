@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
  */
 function chooseAction(option) {
     if (option === 'Módulos y clases') {
-        cargarDemo01()
+        loadDemo01()
     } else if (option === 'Herencia') {
         document.querySelector('main').innerHTML = '<strong>Opción no implementada</strong>'
     }
@@ -27,7 +27,7 @@ function chooseAction(option) {
  * Cargar la paǵina de demostraciones iniciales y luego importar el módulo de ejemplos.
  * Observe el llamado al método init() de la clase Demo01, incluída en el módulo.
  */
-function cargarDemo01() {
+function loadDemo01() {
     Helpers.loadPage('./resources/views/poo-js-01.html', 'main')
         .then(async () => await import('./poo-js-01.js').then(async modulo => modulo.Demo01.init()))
         .catch(error => console.log(error))
