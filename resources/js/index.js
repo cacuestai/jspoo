@@ -2,67 +2,33 @@
 
 import Helpers from './Helpers.js'
 
-let randomNumber
-
 document.addEventListener('DOMContentLoaded', async () => {
 
-    // generar y mostrar por consola un valor aleatorio entre 1000 y 2000
-    randomNumber = Helpers.random(1000, 2000);
-    // intentar adivinar el número aleatorio generado
-    document.querySelector('#try-luck').addEventListener('click', e => tryLuck())
-
-    // ejemplo del uso de String.prototype.translate()
-    document.querySelector('#try-replace').addEventListener('click', e => tryReplace())
-    
-    // crear un array de objetos a partir de un archivo JSON y mostrarlo por consola
-    const departments = await Helpers.fetchData('./data/departamentos.json')
-    console.log(departments);
-    // usar un array de objetos para poblar un select
-    const listDepartments = Helpers.populateSelectList('#departments', departments, 'codigo', 'nombre')
-    // seleccionar el 6° elemento de la lista
-    listDepartments.selectedIndex = 5
-    displayDepartment(listDepartments) 
-    // visualizar los cambios en la selección de elementos
-    listDepartments.addEventListener('change', e => displayDepartment(listDepartments))
+    // se definen las acciones para cuando el usuario pulsa clic sobre la lista de opciones
+    document.querySelectorAll('#menu li').forEach((element) =>
+        element.addEventListener("click", event => chooseAction(event.target.innerHTML))
+    )
 
 })
 
 /**
- * Intentar adivinar un número generado aleatoriamente
+ * Determina qué hacer cuando el usuario pulsa sobre una de las opciones de la lista
+ * @param {String} option El elmento de lista elegido
  */
-function tryLuck() {
-    const strNumber = document.querySelector('#number').value
-
-    if (!Helpers.isNumeric(strNumber)) {
-        document.querySelector('#random > p').innerHTML = 'Intente con números y le irá mejor'
-    } else {
-        const number = parseInt(strNumber)
-        if (number > randomNumber) {
-            document.querySelector('#random > p').innerHTML = `No, es menor que ${number}`
-        } else if (number < randomNumber) {
-            document.querySelector('#random > p').innerHTML = `No, es mayor que ${number}`
-        } else {
-            document.querySelector('#random > p').innerHTML = '¡Felicitaciones!, ese es'
-        }
+function chooseAction(option) {
+    if (option === 'Módulos y clases') {
+        cargarDemo01()
+    } else if (option === 'Herencia') {
+        document.querySelector('main').innerHTML = '<strong>Opción no implementada</strong>'
     }
 }
 
-function tryReplace() {
-    const template = document.querySelector('#template').value
-    // se reemplazan los marcadores $0, $1 y $2 de la cadena original
-    const result = template.translate('strings', 'JavaScript', 'expresiones regulares')
-    document.querySelector('#result').innerHTML = `<u>${result}</u>`
-}
-
 /**
- * Muestra los datos de un elemento seleccionado
- * @param {select} list Una referencia a un select list
+ * Cargar la paǵina de demostraciones iniciales y luego importar el módulo de ejemplos.
+ * Observe el llamado al método init() de la clase Demo01, incluída en el módulo.
  */
- function displayDepartment(list) {
-    const item = list.options[list.selectedIndex]
-    document.querySelector('#department span').innerHTML = `Código: ${item.value}, Nombre: ${item.text}`
-    document.querySelector('#departmentIndex').innerHTML = list.selectedIndex
+function cargarDemo01() {
+    Helpers.loadPage('./resources/views/poo-js-01.html', 'main')
+        .then(async () => await import('./poo-js-01.js').then(async modulo => modulo.Demo01.init()))
+        .catch(error => console.log(error))
 }
-
-
-

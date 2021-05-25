@@ -1,15 +1,17 @@
 
 ## Programación Orientada a Objetos con JavaScript
 
-Estos talleres están basados en [ECMAScript](https://lenguajejs.com/javascript/introduccion/ecmascript/) versión 6 (ES6 o ES2015) y siguientes. ESn se refiere a las especificaciones que sigue JavaScript a partir de junio de 2015 y que a la fecha (2021) llega hasta la [ES12](https://ecmascriptfeatures.online/).
+Estos talleres están basados en [ECMAScript](https://lenguajejs.com/javascript/introduccion/ecmascript/) versión 6 (ES6 o ES2015) y siguientes. ES`n` se refiere a las especificaciones que sigue JavaScript a partir de junio de 2015 y que a la fecha (2021) llega hasta la [ES12](https://ecmascriptfeatures.online/).
+
+Enseguida se muestran como versiones la evolución de los ejemplos. Éstos están dispuestos en `tags` y puede acceder a ellos en GitHub de tres formas: pulsando clic en el botón `main` o en el enlace [tags](https://github.com/cacuestai/jspoo/tags) o en el enlace [releases](https://github.com/cacuestai/jspoo/releases).
 
 ### Versión 0.1.0 – Configuración inicial
 Se proporciona una plantilla de proyecto en la que el archivo `./index.html` [enlaza al módulo](https://desarrolloweb.com/articulos/es6-modules.html) `./resources/js/index.js` utilizando el atributo [defer](https://es.javascript.info/script-async-defer#:~:text=El%20atributo%20defer%20indica%20al,cuando%20el%20DOM%20esta%20completo.) para no interferir con la carga del DOM.
 
 Según el script `index.js`, cuando la carga del DOM ha terminado, se debe mostrar por consola el mensaje "Hola mundo".
 
-### Versión 0.2.0 – Módulos y Clases
-e incluye el módulo `resources/js/Helpers.js` que contiene una clase de utilidades (`helpers`) cuyos métodos puedan servir no sólo para el ejemplo en curso sino para otros proyectos. Algo así como lo que hace la clase Math que define varios métodos y atributos con el modificador `static`, un modificador que se aplica en la definición de elementos de clase en lugar de elementos de instancia, que como su nombre lo indica, requieren la definición de una instancia para poderlos utilizar.
+### Versión 0.2.0 – [Módulos](https://lenguajejs.com/javascript/caracteristicas/modulos-es6/) y [Clases](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Classes)
+Se incluye el módulo `resources/js/Helpers.js` que contiene una clase de utilidades (`helpers`) cuyos métodos puedan servir no sólo para el ejemplo en curso sino para otros proyectos. Algo así como lo que hace la clase Math que define varios métodos y atributos con el modificador `static`, un modificador que se aplica en la definición de elementos de clase en lugar de elementos de instancia, que como su nombre lo indica, requieren la definición de una instancia para poderlos utilizar.
 
 El módulo, además de la clase, incluye un ejemplo de cómo se pueden agregar elementos al objeto `prototype` que viene incluido en las clases que proporciona por defecto el lenguaje. Específicamente se amplia la funcionalidad de la clase `String`, agregando el método `translate`.
 
@@ -21,3 +23,12 @@ Vale la pena resaltar además lo siguiente:
 - También vale la pena resaltar el `parámetro rest` que se define para la función anónima asignada a `translate`.
 
 Descargue esta versión que cuenta con una página donde se puede probar el funcionamiento de lo tratado hasta aquí.
+
+### Versión 0.3.0 – Primera refactorización
+- Se agrega a la clase `Helpers` el método `loadPage` que se usará para cargar las páginas de ejemplos definidas en `./resources/views/`.
+- Los ejemplos del uso de la clase `Helpers`, pasan a la clase `Demo01` definida en el módulo `./resources/js/poo-js-01.js`. 
+- Observe que la clase `Helpers` ya no se exporta por defecto en el módulo `poo-js-01.js`.
+- En la clase `Demo01` se incluye el atributo estático privado `randomNumber`.
+- En `resources/js/index.js` la función `chooseAction` se encarga de condicionar el acceso a las opciones de la aplicación.
+- En la función `cargarDemo01` incluida en `resources/js/index.js` se hace una demostración de [importación dinámica](https://lenguajejs.com/javascript/caracteristicas/dynamic-import/).
+- Por último, observe el uso de `this` dentro de la clase `Demo01`, para hacer referencia a los miembros de dicha clase. Ejemplo: `this.`tryLuck().

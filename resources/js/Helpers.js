@@ -56,6 +56,19 @@ export default class Helpers {
         return await response[type]() // <-- OJO
     }
 
+    static loadPage = async (url, container) => {
+        const response = await fetch(url)
+        const element = document.querySelector(container)
+    
+        if (response.ok) {
+            const html = await response.text()
+            element.innerHTML = html
+            return element
+        }
+    
+        throw new Error(`${response.status} - ${response.statusText}`)
+    }
+
     static isNumeric = (str) => {
         if (typeof str !== 'string') { // // sólo se procesan strings 
             return false

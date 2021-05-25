@@ -1,4 +1,3 @@
-<!-- ./index.html -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -12,49 +11,15 @@
 </head>
 
 <body>
+    <nav>
+        <ul id="menu">
+            <li>Módulos y clases</li>
+            <li>Herencia</li>
+        </ul>
+        <hr>
+    </nav>
 
-    <section id="random">
-        <!-- prueba de una función para generar números aleatorios -->
-        Ejemplo del uso de Helpers.random()
-        <br>
-        <label for="number">Adivine el número que generé (entre 1000 y 2000):</label>
-        <input type="number" name="number" id="number" value="0" min="1000" max="2000">
-        <button type="button" id="try-luck">Probar suerte</button>
-        <br>
-        <p></p>
-    </section>
-
-    <section id="replace">
-        <!-- Ejemplo del uso de prototype, objeto incluído en los objetos JS para agregar propiedades. -->
-        Ejemplo del uso de String.prototype.translate() agregado en el módulo Helpers
-        <br>
-        <label for="template">Cadena parametrizada:</label>
-        <input type="text" name="template" id="template" value="Probando $0 de $1 con $2" readonly>
-        <br>
-        <label for="template">Cadena reemplazada:</label>
-        <span id="result">___________________________</span>
-        <br>
-        <button type="button" id="try-replace">Probar reemplazo</button>
-        <br>
-        <p></p>
-    </section>
-
-    <section>
-        <!-- esta lista seleccionable se llena desde index.js -->
-        Ejemplo de cómo llenar una lista seleccionable con datos almacenados en un archivo JSON
-        <br>
-        Departamentos de Colombia:
-        <select name="departments" id="departments"></select>
-
-        <div id="department">
-            <strong>Departamento seleccionado:</strong>
-            <br>
-            <span></span>
-            <br>
-            Posición en la lista: <span id="departmentIndex"></span>
-        </div>
-    </section>
-
+    <main></main>
 </body>
 
 </html>
