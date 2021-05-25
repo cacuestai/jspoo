@@ -8,10 +8,16 @@ Se proporciona una plantilla de proyecto en la que el archivo `./index.html` [en
 
 Según el script `index.js`, cuando la carga del DOM ha terminado, se debe mostrar por consola el mensaje "Hola mundo".
 
+### Versión 0.2.0 – Módulos y Clases
+e incluye el módulo `resources/js/Helpers.js` que contiene una clase de utilidades (`helpers`) cuyos métodos puedan servir no sólo para el ejemplo en curso sino para otros proyectos. Algo así como lo que hace la clase Math que define varios métodos y atributos con el modificador `static`, un modificador que se aplica en la definición de elementos de clase en lugar de elementos de instancia, que como su nombre lo indica, requieren la definición de una instancia para poderlos utilizar.
 
+El módulo, además de la clase, incluye un ejemplo de cómo se pueden agregar elementos al objeto `prototype` que viene incluido en las clases que proporciona por defecto el lenguaje. Específicamente se amplia la funcionalidad de la clase `String`, agregando el método `translate`.
 
+Vale la pena resaltar además lo siguiente:
+- Se incluye la clase Helpers que consta de cuatro [funciones flecha](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
+- Una de las funciones demuestra el uso de la [API Fetch](https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch) para cargar recursos de tipo [JSON](https://www.json.org/json-es.html).
+- Es una práctica común en JavaScript crear módulos que exportan un único elemento, en este caso, la clase Helpers que va precedida de las palabras claves `export default`.
+- Es importante notar que la asignación de la función anónima al atributo `translate`, no se exporta, ni forma parte del ámbito de la clase. Lo que se hace es simplemente agregar la propiedad `translate` al objeto `prototype` de `String` para asignar en éste una función anónima que contiene la lógica requerida.
+- También vale la pena resaltar el `parámetro rest` que se define para la función anónima asignada a `translate`.
 
-
-
-
-
+Descargue esta versión que cuenta con una página donde se puede probar el funcionamiento de lo tratado hasta aquí.
