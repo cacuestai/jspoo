@@ -32,3 +32,8 @@ Descargue esta versión que cuenta con una página donde se puede probar el func
 - En `resources/js/index.js` la función `chooseAction` se encarga de condicionar el acceso a las opciones de la aplicación.
 - En la función `loadDemo01` incluida en `resources/js/index.js` se hace una demostración de [importación dinámica](https://lenguajejs.com/javascript/caracteristicas/dynamic-import/).
 - Por último, observe el uso de `this` dentro de la clase `Demo01`, para hacer referencia a los miembros de dicha clase. Ejemplo: `this.`tryLuck().
+
+### Versión 0.4.0 – Herencia
+- Se agrega [Prism](https://prismjs.com/) para mostrar código fuente.
+- Se implementa un ejemplo básico de herencia.
+- Se incluyen varios ejemplos de instancias a partir de la herencia implementada

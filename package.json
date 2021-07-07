@@ -1,0 +1,28 @@
+{
+  "name": "poo-js",
+  "description": "Estos talleres están basados en [ECMAScript](https://lenguajejs.com/javascript/introduccion/ecmascript/) versión 6 (ES6 o ES2015) y siguientes. ES`n` se refiere a las especificaciones que sigue JavaScript a partir de junio de 2015 y que a la fecha (2021) llega hasta la [ES12](https://ecmascriptfeatures.online/).",
+  "version": "1.0.0",
+  "main": "index.html",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cacuestai/jspoo.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "fetch",
+    "POO"
+  ],
+  "author": "Carlos Cuesta Iglesias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cacuestai/jspoo/issues"
+  },
+  "homepage": "https://github.com/cacuestai/jspoo#readme",
+  "dependencies": {
+    "prismjs": "^1.24.1"
+  }
+}

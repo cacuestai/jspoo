@@ -30,11 +30,11 @@ export default class Helpers {
     /**
      * Realizar una petición HTTP: ver https://lenguajejs.com/javascript/peticiones-http/fetch/
      * @param {String} url Dirección a la que se hace la petición
-     * @param {Object} options Un objeto que puede contener: método, cuerpo, cabeceras y credenciales 
      * @param {String} type Puede ser [json|text|blob|formData|...]
+     * @param {Object} options Un objeto que puede contener: método, cuerpo, cabeceras y credenciales 
      * @returns La respuesta a la petición en un formato dado según el parámetro type
      */
-    static fetchData = async (url, options = {}, type = 'json') => {
+    static fetchData = async (url, type = 'json', options = {}) => {
 
         if (Object.entries(options).length > 0) {
             if (!("headers" in options)) {
@@ -69,6 +69,12 @@ export default class Helpers {
         throw new Error(`${response.status} - ${response.statusText}`)
     }
 
+    static loadScript = async (url, container) => {
+        let classCode = await Helpers.fetchData(url, 'text')
+        classCode = Prism.highlight(classCode, Prism.languages.javascript, 'javascript')
+        document.querySelector(container).innerHTML = classCode
+    }
+
     static isNumeric = (str) => {
         if (typeof str !== 'string') { // // sólo se procesan strings 
             return false
@@ -94,3 +100,4 @@ String.prototype.translate = function (...texts) {
     const regex = /\$(\d+)/gi // no requiere comprobación de mayúsculas pero se deja como ejemplo
     return str.replace(regex, (item, index) => texts[index])
 }
+

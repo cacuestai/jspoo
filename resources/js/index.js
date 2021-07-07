@@ -19,7 +19,7 @@ function chooseAction(option) {
     if (option === 'Módulos y clases') {
         loadDemo01()
     } else if (option === 'Herencia') {
-        document.querySelector('main').innerHTML = '<strong>Opción no implementada</strong>'
+        loadDemo02()
     }
 }
 
@@ -29,6 +29,23 @@ function chooseAction(option) {
  */
 function loadDemo01() {
     Helpers.loadPage('./resources/views/poo-js-01.html', 'main')
-        .then(async () => await import('./poo-js-01.js').then(async modulo => modulo.Demo01.init()))
-        .catch(error => console.log(error))
+        .then(async () => await import('./poo-js-01.js').then(async module => module.Demo01.init()))
+        .catch(error => console.error(error))
 }
+
+function loadDemo02() {
+    // cargar la página donde se muestra el ejemplo de herencia
+    Helpers.loadPage('./resources/views/poo-js-02.html', 'main')
+        // cargar el script con los ejemplos
+        .then(async () => await import('./poo-js-02.js').then(async module => {
+            document.querySelector('pre').classList.add('code-style')
+            // cargar cada una de las clases utilizadas en los ejemplos
+            await Helpers.loadScript('./resources/js/inheritance/person.js', '#code-person')
+            await Helpers.loadScript('./resources/js/inheritance/student.js', '#code-student')
+            await Helpers.loadScript('./resources/js/inheritance/teacher.js', '#code-teacher')
+            await Helpers.loadScript('./resources/js/poo-js-02.js', '#code-poo-examples')
+            module.Demo02.init()
+        }))
+        .catch(error => console.error(error))
+}
+
